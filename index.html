@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trang Truong Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: white;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 380px;
+      background: #181818;
+      padding: 30px 20px;
+      border-right: 1px solid #282828;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .sidebar img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 3px solid #1DB954;
+    }
+
+    .sidebar h2 { font-size: 18px; text-align: center; }
+    .sidebar p { font-size: 14px; text-align: center; color: #ccc; }
+    .sidebar a { color: #1DB954; text-decoration: none; }
+
+    /* MAIN PANEL */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #181818;
+      padding: 20px 30px;
+      border-bottom: 1px solid #282828;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .portfolio-header {
+      background-color: #2a2a2a;
+      color: #1DB954;
+      font-size: 28px;
+      font-weight: 700;
+      padding: 20px 30px;
+      border-radius: 16px;
+      width: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .typing-text { white-space: nowrap; overflow: hidden; }
+    .cursor {
+      display: inline-block;
+      margin-left: 8px;
+      color: #1DB954;
+      animation: flicker 0.9s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .search-bar {
+      padding: 10px 14px;
+      border-radius: 20px;
+      border: none;
+      background: #2a2a2a;
+      color: white;
+      width: 220px;
+    }
+
+    .topbar-icons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .topbar-icons a {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1DB954;
+      font-size: 24px;
+      border: 2px solid #1DB954;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .topbar-icons a:hover {
+      background: #1DB954;
+      color: #191414;
+    }
+
+    .content {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      align-items:center;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding-left: 0;
+      width: 100%;
+    }
+
+    section h2 {
+      font-size: 24px;
+      margin-bottom: 0px;
+      color: #1DB954;
+      text-align: left;
+      margin-left:0;
+      padding-left: 0;
+      width: 100%;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px;
+    }
+
+    .skill-item img {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-item img:hover { transform: scale(1.1); }
+
+    /* PROJECTS */
+    .projects-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 24px;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 10px;
+    }
+
+    .projects-slider::-webkit-scrollbar { display: none; }
+
+    .project-card {
+        text-decoration: none;
+        color: white;
+    }
+
+    .project-card {
+      min-width: 260px;
+      scroll-snap-align: start;
+      text-align: center;
+      background: #1e1e1e;
+      border-radius: 16px;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card img {
+      width: 260px;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-card:hover img {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .project-card span {
+        display: block;
+        margin-top: 12px;
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+    }
+
+    .project-card:hover span {
+        color: #1DB954;
+    }
+
+    /* EXPERIENCE */
+
+    .experience-entry {
+        margin: 0 auto 40px auto; /* centers each entry horizontally */
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .experience-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* centers the content block */
+        gap: 40px;
+    }
+    .experience-org {
+      color: #1db954;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .experience-role {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .experience-date {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .sidebar { display: none; }
+      .topbar { flex-direction: column; gap: 20px; }
+      .content { padding: 20px; }
+      .portfolio-header, .search-bar { width: 100%; }
+    }
+
+    /* Consistent alignment for all section titles */
+    #skills h2, #projects h2, #experience h2 {
+        text-align: left; /* Aligns the title to the left */
+        margin-left:0; /* Removes any extra margin */
+        padding-left: 40px; /* Adjust as needed */
+    }
+    .footer {
+  text-align: center;
+  padding: 40px 0 60px;
+  font-size: 14px;
+  color: #888;
+}
+
+.footer a {
+  color: #1DB954;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <img src="image.png" alt="Trang Truong" />
+    <h2>Trang Truong</h2>
+    <p>Hello! I am a 2nd year undergraduate student studying <b>Data Analytics</b> @ <b>Arizona State University</b> 🔱.<br><br>
+    I spend most time on playing with dataset while listening to music.</p>
+    <p><a href="mailto:trangtruong.071105@gmail.com">trangtruong.071105@gmail.com</a></p>
+    <p><a href="https://linkedin.com/in/trangtruong11">LinkedIn</a> | <a href="https://github.com/trwgltuhchang">GitHub</a></p>
+  </div>
+
+  <!-- MAIN PANEL -->
+  <div class="main">
+    <div class="topbar">
+      <div class="portfolio-header">
+        <span class="typing-text">Welcome to my Portfolio!</span><span class="cursor">|</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <div class="topbar-icons">
+          <a href="https://www.linkedin.com/in/trangtruong11/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/trwgltuhchang" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="resume.pdf" download title="Download Resume"><i class="fas fa-file-download"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"><div>Python</div></div>
+          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"><div>C++</div></div>
+          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"><div>HTML</div></div>
+          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"><div>SQL</div></div>
+          <div class="skill-item"><img src="https://img.icons8.com/color/48/microsoft-excel-2019--v1.png"><div>Excel</div></div>
+          <div class="skill-item"><img src="tableau.png"><div>Tableau</div></div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-slider">
+          <a href="https://github.com/trwgltuhchang/Projects/blob/main/Sephora.ipynb" class="project-card" target="_blank">
+            <img src="sephora.png" alt="Sephora Reviews" />
+            <span>Sephora Reviews</span>
+          </a>
+          <a href="https://github.com/trwgltuhchang/Projects/blob/main/House_Rent_Predict.ipynb" class="project-card" target="_blank">
+            <img src="House Rent.png" alt="House Rent Prediction" />
+            <span>House Rent Prediction</span>
+          </a>
+          <a href="https://github.com/trwgltuhchang/Projects/blob/main/Electric_Vehicle_Population_Data%20(1).ipynb" class="project-card" target="_blank">
+            <img src="Electric Vehicle.png" alt="EV Population Analysis" />
+            <span>EV Population Analysis</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience-timeline">
+          <div class="experience-entry">
+            <p class="experience-org">School of Mathematical and Statistical Sciences, ASU</p>
+            <h3 class="experience-role">Office Aide</h3>
+            <p class="experience-date">Oct 2024 – Present</p>
+          </div>
+          <div class="experience-entry">
+            <p class="experience-org">Healing Palette Vietnam</p>
+            <h3 class="experience-role">Vice Leader, Head of Communication Board</h3>
+            <p class="experience-date">2022</p>
+          </div>
+          <div class="experience-entry">
+            <p class="experience-org">SOS Children’s Village</p>
+            <h3 class="experience-role">Volunteer English Teacher</h3>
+            <p class="experience-date">2021</p>
+          </div>
+          <div class="experience-entry">
+            <p class="experience-org">Light Your World</p>
+            <h3 class="experience-role">Vice Leader, Head of Communication Board</h3>
+            <p class="experience-date">2020</p>
+          </div>
+        </div>
+      </section>
+    </div> <!-- END content -->
+    <div style="text-align: center; padding: 40px 0 60px; font-size: 14px; color: #888;">
+      @ Trang's Portfolio 2025, Design By Trang<br>
+      Built with CSS and HTML. Check out for the source
+      <a href="https://github.com/trwgltuhchang/Portfolio" target="_blank" style="color: #1DB954; text-decoration: none;">
+        code
+      </a>
+      here.
+    </div>
+  </div> <!-- END main -->  
+</body>
+</html>
