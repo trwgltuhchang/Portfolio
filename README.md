@@ -33,7 +33,7 @@ npm install
 ```
 ### 3. npm run dev
 ```bash
-Open index.html in your browser or edit with VSCode
+Open [index.html](index.html) in your browser or edit with VSCode
 ```
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
