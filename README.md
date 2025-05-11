@@ -23,15 +23,15 @@ Welcome to the source code for my personal portfolio website, built to showcase 
 
 The site is deployed via **GitHub Pages**.
 
-# 1. To clone the repo
+### 1. To clone the repo
 ```bash
 git clone https://github.com/<your-username>/portfolio.git
 ```
-# 2. Install dependencies
+### 2. Install dependencies
 ```bash
 npm install
 ```
-# 3. npm run dev
+### 3. npm run dev
 ```bash
 Open index.html in your browser or edit with VSCode
 ```
