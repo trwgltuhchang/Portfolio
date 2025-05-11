@@ -35,7 +35,7 @@ npm install
 ```bash
 Open index.html in your browser or edit with VSCode
 ```
-📄 License
+## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
