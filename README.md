@@ -23,13 +23,18 @@ Welcome to the source code for my personal portfolio website, built to showcase 
 
 The site is deployed via **GitHub Pages**.
 
-```bash
 # 1. To clone the repo
+```bash
 git clone https://github.com/<your-username>/portfolio.git
+```
 # 2. Install dependencies
+```bash
 npm install
+```
 # 3. npm run dev
+```bash
 Open index.html in your browser or edit with VSCode
+```
 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
